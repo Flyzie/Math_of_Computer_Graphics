@@ -21,6 +21,9 @@ scalardDivide(k){
     return new Vector3D(this.x / k, this.y / k, this.z / k);
 }
 
+mulVectors(Vector2){
+    return this.x * Vector2.x + this.y * Vector2.y + this.z * Vector2.z;
+}
 
 calculateLength(){
     return Math.sqrt(this.x ** 2 + this.y ** 2 + this.z ** 2);
@@ -39,7 +42,12 @@ crossProduct(Vector2){
     return new Vector3D((this.y * Vector2.z) - (this.z * Vector2.y) , (this.z * Vector2.x) - (this.x * Vector2.z), (this.x * Vector2.y) - (this.y * Vector2.x));
 }
 
-//obliczanie kata. Kat = (crossProduct z Vector11 i Vector2) / (normalise.Vector1 * normalise.Vector2)
+degreeCalculator(Vector2){
+
+    let x =  this.mulVectors(Vector2);
+    return "kąt miedzy wektorami: " + (x / (this.calculateLength() * Vector2.calculateLength())) * (180 / Math.PI);
+}
+
     
 }
 
@@ -63,6 +71,7 @@ console.log(VectorNorm);
 console.log(VectorNorm.calculateLength());
 */
 console.log(VectorOne.crossProduct(VectorTwo));
+console.log(VectorOne.degreeCalculator(VectorTwo));
 
 }
 
