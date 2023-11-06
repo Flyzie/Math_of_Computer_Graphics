@@ -21,7 +21,7 @@ scalardDivide(k){
     return new Vector3D(this.x / k, this.y / k, this.z / k);
 }
 
-mulVectors(Vector2){
+dotProduct(Vector2){
     return this.x * Vector2.x + this.y * Vector2.y + this.z * Vector2.z;
 }
 
@@ -38,14 +38,14 @@ normalize(){
     }
 }
 
-crossProduct(Vector2){
+crossProduct(Vector2){ //iloczyn skalarny 
     return new Vector3D((this.y * Vector2.z) - (this.z * Vector2.y) , (this.z * Vector2.x) - (this.x * Vector2.z), (this.x * Vector2.y) - (this.y * Vector2.x));
 }
 
 degreeCalculator(Vector2){
 
-    let x =  this.mulVectors(Vector2);
-    return "kąt miedzy wektorami: " + (x / (this.calculateLength() * Vector2.calculateLength())) * (180 / Math.PI);
+    let x =  this.dotProduct(Vector2);
+    return "kąt miedzy wektorami: ", Math.acos(x / (this.calculateLength() * Vector2.calculateLength())) * (180 / Math.PI);
 }
 
     
@@ -54,24 +54,21 @@ degreeCalculator(Vector2){
 
 function main(){
 
-const VectorOne = new Vector3D(2, 3 ,4);
-const VectorTwo = new Vector3D(4, 7 ,2);
+const VectorOne = new Vector3D(0, 3, 0);
+const VectorTwo = new Vector3D(5, 5, 0);
+const VectorThree = new Vector3D(4, 5 ,1);
+const VectorFour = new Vector3D(4, 1 ,3);
 
-const VectorSum = VectorOne.add(VectorTwo);
-const VectorMul = VectorOne.scalarMultiply(2);
-const VectorLen1 = VectorOne.calculateLength();
+console.log("dodawanie wektórów 1: ", (VectorOne.add(VectorTwo)));
+console.log("dodawanie wektórów 2: ", (VectorTwo.add(VectorOne)));
+console.log("kąt między wektorami: ", VectorOne.degreeCalculator(VectorTwo));
 
-//console.log(VectorMul);
-//console.log(VectorLen1);
-/*
-console.log(VectorOne);
-console.log(VectorOne.calculateLength());
-const VectorNorm = VectorOne.normalize();
-console.log(VectorNorm);
-console.log(VectorNorm.calculateLength());
-*/
-console.log(VectorOne.crossProduct(VectorTwo));
-console.log(VectorOne.degreeCalculator(VectorTwo));
+console.log("//////////////////////////////////////////////////////////////////////////////////////////")
+
+const VectorCross = VectorThree.crossProduct(VectorFour);
+console.log("Wektor prostopadły: ", VectorCross);
+const VectorNorm = VectorCross.normalize();
+console.log("Wektor znormalizowany: ", VectorNorm, "jego długość: ", VectorNorm.calculateLength());
 
 }
 
