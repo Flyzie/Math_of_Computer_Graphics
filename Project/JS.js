@@ -18,7 +18,11 @@ scalarMultiply(k){
 }
 
 scalardDivide(k){
-    return new Vector3D(this.x / k, this.y / k, this.z / k);
+    if(k != 0){
+        return new Vector3D(this.x / k, this.y / k, this.z / k);
+    }else{
+        return console.log("Cannot divide by 0");
+    }
 }
 
 dotProduct(Vector2){
@@ -61,7 +65,7 @@ const VectorFour = new Vector3D(4, 1 ,3);
 
 console.log("dodawanie wektórów 1: ", (VectorOne.add(VectorTwo)));
 console.log("dodawanie wektórów 2: ", (VectorTwo.add(VectorOne)));
-console.log("kąt między wektorami: ", VectorOne.degreeCalculator(VectorTwo));
+console.log("kąt między wektorami: ", Math.round(VectorOne.degreeCalculator(VectorTwo)));
 
 console.log("//////////////////////////////////////////////////////////////////////////////////////////")
 
