@@ -1,3 +1,5 @@
+const Vector3D = require('./vectors');
+
 class Matrix{
     constructor (rows, cols, ...parameters){
         this.rows = rows;
@@ -94,7 +96,7 @@ class Matrix{
 
         const rows1 = this.rows
         const cols1 = this.cols;
-        const rows2 = Matrix2.rows
+        const rows2 = Matrix2.rows;
         const cols2 = Matrix2.cols;
 
         if (cols1 !== rows2) {
@@ -117,19 +119,54 @@ class Matrix{
             return new Matrix(rows1, cols2, ...result);
         }
 
-     matrixTranspose() {
 
-        const result = [];
+    matrixTranspose() {
 
-        for (let i = 0; i < this.cols; i++) {
-            for (let j = 0; j < this.rows; j++) {
-                result.push(this.elements[j * this.cols + i]);
+     const result = [];
+
+     for (let i = 0; i < this.cols; i++) {
+         for (let j = 0; j < this.rows; j++) {
+             result.push(this.elements[j * this.cols + i]);
             }
         }
-
         return new Matrix(this.rows, this.cols , ...result);
-    }    
-    
+    }
+
+    rotateX(angle) {
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+
+        return new Matrix(4, 4,
+            1, 0, 0, 0,
+            0, cosA, -sinA, 0,
+            0, sinA, cosA, 0,
+            0, 0, 0, 1
+        );
+    }
+
+    rotateY(angle) {
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+
+        return new Matrix(4, 4,
+            cosA, 0, sinA, 0,
+            0, 1, 0, 0,
+            -sinA, 0, cosA, 0,
+            0, 0, 0, 1
+        );
+    }
+
+    rotateZ(angle) {
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+
+        return new Matrix(4, 4,
+            cosA, -sinA, 0, 0,
+            sinA, cosA, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        );
+    }
     
 }
 
@@ -153,20 +190,56 @@ class Matrix{
                 k++
             }
         }
-        return new Matrix(rows, cols, ...result)
+        return new Matrix(rows, cols, ...result);
     }
-/*
-const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-*/
 
-const identytyMat = identityMatrix(3, 3);
-const matrix1 = new Matrix(2,3,   2,1,4,3,5,1);
-const matrix2 = new Matrix(3,2,   1, 4, 6, 8, 2, 4);
-const matrix3 = matrix1.matrixMultiply(matrix2);
-console.log(matrix1); 
-console.log(matrix3); 
-console.log(identytyMat);
-console.log(matrix1.matrixTranspose())
+
+
+    function translationMatrix(translationVector){
+        return new Matrix(4,4,
+            1, 0, 0, translationVector.x,
+            0, 1, 0, translationVector.y,
+            0, 0, 1, translationVector.z,
+            0, 0, 0, 1);
+    }
+
+    function scaleMatrix(scaleVector){
+        return new Matrix(4,4,
+        scaleVector.x, 0, 0, 0,
+        0, scaleVector.y, 0, 0,
+        0, 0, scaleVector.z, 0,
+        0, 0, 0, 1);
+    }
+
+    function convertVector(Vector){
+        return new Matrix(4,1, Vector.x, Vector.y, Vector.z, 1);
+    }
+
+    function resultMatrix(vector, translationVector, scaleVector){
+        const M = translationMatrix(translationVector).matrixMultiply(scaleMatrix(scaleVector));
+        return result = M.matrixMultiply(convertVector(vector));
+    }
+
+const matrix1 = new Matrix(3,3,   1,1,1,1,1,1,1,1,1);
+const matrix2 = new Matrix(3,3,   2,2,2,2,2,2,2,2,2);
+//const matrix3 = matrix1.matrixAdd(matrix2);
+const vectorTest = new Vector3D(2, 4, 5);
+const translationVector = new Vector3D(1,2,3);
+const scaleVector = new Vector3D(1,2,3);
+const translationMatrix1 = translationMatrix(translationVector);
+const scaleMatrix1 = scaleMatrix(scaleVector);
+const matrixFromV = convertVector(vectorTest);
+
+const vectorExercise = new Vector3D(1, 0, 0);
+const rotationMatrixY = new Matrix().rotateY(Math.PI / 2);
+
+console.log(rotationMatrixY);
+console.log(rotationMatrixY.matrixMultiply(convertVector(vectorExercise)));
+console.log("////////////////////////////////////////////////////")
+//console.log(matrix1); 
+//console.log(matrixFromV); 
+console.log(translationMatrix1.matrixMultiply(matrixFromV));
+console.log(scaleMatrix1.matrixMultiply(matrixFromV));
+console.log(resultMatrix(vectorTest, translationVector, scaleVector));
+//console.log(identytyMat);
+//console.log(matrix1.matrixTranspose())

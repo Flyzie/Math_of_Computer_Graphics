@@ -77,3 +77,4 @@ console.log("Wektor znormalizowany: ", VectorNorm, "jego długość: ", VectorNo
 }
 
 main();
+module.exports = Vector3D;
