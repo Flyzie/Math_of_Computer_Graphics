@@ -63,6 +63,7 @@ const VectorTwo = new Vector3D(5, 5, 0);
 const VectorThree = new Vector3D(4, 5 ,1);
 const VectorFour = new Vector3D(4, 1 ,3);
 
+/*
 console.log("dodawanie wektórów 1: ", (VectorOne.add(VectorTwo)));
 console.log("dodawanie wektórów 2: ", (VectorTwo.add(VectorOne)));
 console.log("kąt między wektorami: ", Math.round(VectorOne.degreeCalculator(VectorTwo)));
@@ -77,4 +78,6 @@ console.log("Wektor znormalizowany: ", VectorNorm, "jego długość: ", VectorNo
 }
 
 main();
+*/
+}
 module.exports = Vector3D;
