@@ -77,17 +77,16 @@ class Quaternion {
     
     const angleRadians = (angleDegrees * Math.PI) / 180;
 
-    // Choose axis (for example, x-axis)
-    const axis = new Vector3D(1, 0, 0).normalize(); // Assuming you have a normalize method in your Vector3D class
+    // Wybor osi
+    const axis = new Vector3D(1, 0, 0).normalize();
     const rotationQuaternion = Quaternion.fromAxisAngle(axis, angleRadians).normalize();
   
-    // Convert point (vector) to quaternion
+    // Zmiana wektora na kwaternion
     const pointQuaternion = new Quaternion(0, point.x, point.y, point.z);
   
-    // Rotate point by quaternion
+    // Obrót przez kwaternion
     const rotatedPointQuaternion = rotationQuaternion.multiply(pointQuaternion).multiply(rotationQuaternion.conjugate());
   
-    // Extract the x, y, z components
     return new Vector3D(rotatedPointQuaternion.x, rotatedPointQuaternion.y, rotatedPointQuaternion.z);
   }
   
