@@ -233,6 +233,7 @@ const matrixFromV = convertVector(vectorTest);
 const vectorExercise = new Vector3D(1, 0, 0);
 const rotationMatrixY = new Matrix().rotateY(Math.PI / 2);
 
+/*
 console.log(rotationMatrixY);
 console.log(rotationMatrixY.matrixMultiply(convertVector(vectorExercise)));
 console.log("////////////////////////////////////////////////////")
@@ -243,3 +244,4 @@ console.log(scaleMatrix1.matrixMultiply(matrixFromV));
 console.log(resultMatrix(vectorTest, translationVector, scaleVector));
 //console.log(identytyMat);
 //console.log(matrix1.matrixTranspose())
+*/

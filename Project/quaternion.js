@@ -98,9 +98,11 @@ class Quaternion {
 
   const rotatedPoint = rotatePointAroundAxis(testPoint, 270);
 
+
+  /*
   console.log("Original Point:", testPoint);
   console.log("Rotated Point:", rotatedPoint);
   
   
   console.log(quaternion1.multiply(quaternion2));
-  console.log(quaternion2.multiply(quaternion1));
+  console.log(quaternion2.multiply(quaternion1));*/
