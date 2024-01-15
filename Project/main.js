@@ -3,7 +3,8 @@ const Matrix3D = require('./matrix');
 const Quaternion = require('./quaternion');
 const Line3D = require('./line');
 const Plane3D = require('./plane')
-const Section3D = require('./section')
+const Section3D = require('./section');
+const Orb3D = require('./orb');
 
 
 const line1 = new Line3D(new Vector3D(-2, 4, 0), new Vector3D(3, 1, 5));
@@ -40,3 +41,12 @@ const section1 = new Section3D(new Vector3D(5,5,4), new Vector3D(10, 10, 6));
 const section2 = new Section3D(new Vector3D(5,5,4), new Vector3D(10, 10, 3));
 
 console.log('intersection of sections: ', section1.intersectionWithSection(section2));
+
+//intersection between orb and line
+const orb = new Orb3D(new Vector3D(0,0,0), Math.sqrt(26));
+const pointA = new Vector3D(3, -1, -2);
+const pointA_ = new Vector3D(5, 3, -4);
+const lineO = new Line3D(pointA, pointA_);
+
+console.log('intersections of line and orb', orb.intersectionWithLine(lineO));
+
