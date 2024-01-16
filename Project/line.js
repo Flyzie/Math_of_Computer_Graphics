@@ -8,7 +8,7 @@ class Line3D{
         this.p = p;
         this.dir = dir;
     }
-
+    
     linesIntersection(line2){
         const crossProduct = this.dir.crossProduct(line2.dir);
 
@@ -25,6 +25,8 @@ class Line3D{
 
         return intersectionp;
     }
+
+    
     
     AngleBetweenLines(otherLine) {
         const dotProduct = this.dir.dotProduct(otherLine.dir);

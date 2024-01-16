@@ -6,7 +6,7 @@ const Plane3D = require('./plane')
 const Section3D = require('./section');
 const Orb3D = require('./orb');
 
-
+console.log('-----------------LINES AND STUFF-----------------');
 const line1 = new Line3D(new Vector3D(-2, 4, 0), new Vector3D(3, 1, 5));
 const line2 = new Line3D(new Vector3D(-2, 4, 0), new Vector3D(1, -5, 3));
 //Intersection between lines
@@ -38,7 +38,7 @@ console.log('angle between planes: ', plane2.angleWithPlane(plane3));
 //intersection between two sections
 
 const section1 = new Section3D(new Vector3D(5,5,4), new Vector3D(10, 10, 6));
-const section2 = new Section3D(new Vector3D(5,5,4), new Vector3D(10, 10, 3));
+const section2 = new Section3D(new Vector3D(5,5,5), new Vector3D(10, 10, 3));
 
 console.log('intersection of sections: ', section1.intersectionWithSection(section2));
 

@@ -91,7 +91,8 @@ class Quaternion {
   }
   
   
-  // Example usage:
+  console.log('-----------------QUATERNIONS-----------------');
+
   const quaternion1 = new Quaternion(1, 2, 3, 4);
   const quaternion2 = new Quaternion(5, 6, 7, 8);
   const testPoint = new Vector3D(-1,-1,-1)
@@ -99,10 +100,9 @@ class Quaternion {
   const rotatedPoint = rotatePointAroundAxis(testPoint, 270);
 
 
-  /*
   console.log("Original Point:", testPoint);
   console.log("Rotated Point:", rotatedPoint);
   
   
   console.log(quaternion1.multiply(quaternion2));
-  console.log(quaternion2.multiply(quaternion1));*/
+  console.log(quaternion2.multiply(quaternion1));
