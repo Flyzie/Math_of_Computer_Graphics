@@ -1,12 +1,17 @@
-const Vector3D = require('./vectors');
-const Matrix3D = require('./matrix');
-const Quaternion = require('./quaternion');
+const Vector3D = require('./vectors').default;
+const Matrix3D = require('./matrix').default;
+const Quaternion = require('./quaternion').default;
 const Line3D = require('./line');
-const Plane3D = require('./plane')
-const Section3D = require('./section');
+const Plane3D = require('./plane').default
+const Section3D = require('./section').default;
 const Orb3D = require('./orb');
+//-------------------QUATERNION-------------------
 
+<<<<<<< Updated upstream
 console.log('-----------------LINES AND STUFF-----------------');
+=======
+console.log('-------------------LINES ETC-------------------');
+>>>>>>> Stashed changes
 const line1 = new Line3D(new Vector3D(-2, 4, 0), new Vector3D(3, 1, 5));
 const line2 = new Line3D(new Vector3D(-2, 4, 0), new Vector3D(1, -5, 3));
 //Intersection between lines

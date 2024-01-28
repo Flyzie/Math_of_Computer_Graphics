@@ -1,4 +1,4 @@
-const Vector3D = require('./vectors');
+import Vector3D from './vectors';
 
 class Section3D {
     constructor(startPoint, endPoint) {
@@ -27,4 +27,4 @@ class Section3D {
         return intersectionPoint;
     }
 }
-module.exports = Section3D;
+export default Section3D;

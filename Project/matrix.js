@@ -1,4 +1,4 @@
-const Vector3D = require('./vectors');
+import Vector3D from './vectors';
 
 class Matrix{
     constructor (rows, cols, ...parameters){
@@ -167,8 +167,19 @@ class Matrix{
             0, 0, 0, 1
         );
     }
-    
+
+    vectorFromMatrix() {
+        if (this.rows !== 4 || this.cols !== 1) {
+            console.error("Invalid matrix dimensions for vector conversion.");
+            return null;
+        }
+
+        const vector = new Vector3D(this.elements[0], this.elements[1], this.elements[2]);
+        return vector;
+    }
 }
+    
+
 
     function identityMatrix(rows, cols){
     
@@ -233,7 +244,7 @@ const matrixFromV = convertVector(vectorTest);
 const vectorExercise = new Vector3D(1, 0, 0);
 const rotationMatrixY = new Matrix().rotateY(Math.PI / 2);
 
-/*
+
 console.log(rotationMatrixY);
 console.log(rotationMatrixY.matrixMultiply(convertVector(vectorExercise)));
 console.log("////////////////////////////////////////////////////")
@@ -244,4 +255,6 @@ console.log(scaleMatrix1.matrixMultiply(matrixFromV));
 console.log(resultMatrix(vectorTest, translationVector, scaleVector));
 //console.log(identytyMat);
 //console.log(matrix1.matrixTranspose())
-*/
+
+
+export default Matrix;

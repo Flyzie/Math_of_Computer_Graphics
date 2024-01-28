@@ -1,7 +1,7 @@
 
-const Matrix3D = require('./matrix');
-const Quaternion = require('./quaternion');
-const Vector3D = require('./vectors');
+import Matrix3D from './matrix';
+import Quaternion from './quaternion';
+import Vector3D from './vectors';
 
 class Line3D{
     constructor(p, dir){
@@ -69,4 +69,4 @@ class Line3D{
     }
     
 }
-module.exports = Line3D;
+export default Line3D;

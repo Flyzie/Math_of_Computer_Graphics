@@ -1,5 +1,5 @@
-const Vector3D = require('./vectors');
-const Line3D = require('./line');
+const Vector3D = require('./vectors').default;
+const Line3D = require('./line').default;
 
 class Orb3D {
     constructor(center, radius) {

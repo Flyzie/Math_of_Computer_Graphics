@@ -1,7 +1,7 @@
-const Vector3D = require('./vectors');
-const Matrix3D = require('./matrix');
-const Quaternion = require('./quaternion')
-const Line3D = require('./line');
+import Vector3D from './vectors';
+import Matrix3D from './matrix';
+import Quaternion from './quaternion';
+import Line3D from './line';
 
 class Plane3D{
     constructor(a, b, c, d){
@@ -12,6 +12,25 @@ class Plane3D{
 
         const vec = new Vector3D(a,b,c);
         this.normal = vec;
+    }
+
+    calculatePlaneCoefficients(v1, v2, v3) {
+        // Calculate two vectors that lie on the plane
+        let vec1 = v2.subtract(v1);
+        let vec2 = v3.subtract(v1);
+
+        // Calculate the cross product of these vectors
+        let normal = vec1.cross(vec2);
+
+        // The coefficients a, b, c are the components of the normal vector
+        let a = normal.x;
+        let b = normal.y;
+        let c = normal.z;
+
+        // The coefficient d can be calculated using one of the points on the plane
+        let d = -(a * v1.x + b * v1.y + c * v1.z);
+
+        return [a, b, c, d];
     }
 
     intersectionWithPlane(plane) {
@@ -55,4 +74,4 @@ class Plane3D{
     }
 }
 
-module.exports = Plane3D;
+export default Plane3D;
