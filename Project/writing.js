@@ -5,6 +5,7 @@ import Line3D from './line.js';
 import Plane3D from './plane.js';
 import Section3D from './section.js';
 import Cube3D from './cube.js';
+import Camera3D from './camera.js';
 
 let ctx = document.querySelector("canvas").getContext("2d");
 let height = ctx.canvas.height = document.documentElement.clientHeight;
@@ -17,6 +18,7 @@ class Point2D {
 let center = new Vector3D(100, 0, 300);
 let cube = new Cube3D(center, 200);
 let pointer = new Point2D(0, 0);
+let camera = new Camera3D(new Vector3D(0, 0, 0));
 
 function project(vertices, width, height){
 
@@ -94,6 +96,16 @@ function loop() {
         }
     }
 
+    ctx.fillStyle = "rgba(255, 255, 255, 1)";
+    for(let arrays of camera.lines){
+        for(let line of arrays){
+            cube.intersectionWithLine(line);
+            ctx.fillRect(gridOffsetX , gridOffsetY, 4, 4);
+        }
+    }
+
+    
+
     window.requestAnimationFrame(loop);
     }
 
@@ -107,4 +119,5 @@ function loop() {
 
     console.log(cube.planes[1]);
     console.log(cube.vertices);
+    console.log(camera.lines);
     loop();

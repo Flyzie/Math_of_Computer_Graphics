@@ -90,6 +90,19 @@ class Cube3D{
         }
         this.updatePlanes();
     }
+
+    intersectionWithLine(line) {
+        for (let plane of this.planes) {
+            let intersection = line.intersectionWithPlane(plane);
+            if (intersection !== null) {
+                console.log("intersection at point: ", intersection);
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
 }
 
 function convertVector(Vector){

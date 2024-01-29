@@ -1,6 +1,3 @@
-//
-// Created by Grzegorz Bednarek on 03/01/2024.
-//
 
 #ifndef MATGRAFKOMP6_CAMERA_H
 #define MATGRAFKOMP6_CAMERA_H
