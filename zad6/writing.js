@@ -10,13 +10,15 @@ let ctx = document.querySelector("canvas").getContext("2d");
 let height = ctx.canvas.height = document.documentElement.clientHeight;
 let width = ctx.canvas.width = document.documentElement.clientWidth;
 
-class Point2D {
-    constructor(x, y) { this.x = x; this.y = y; }
-}
+const Point2D = function(x, y) { this.x = x; this.y = y; };
 
-let center = new Vector3D(100, 0, 300);
+let center = new Vector3D(0, 0, 400);
 let cube = new Cube3D(center, 200);
 let pointer = new Point2D(0, 0);
+
+function convertVector(Vector){
+    return new Matrix3D(4,1, Vector.x, Vector.y, Vector.z, 1);
+}
 
 function project(vertices, width, height){
 
@@ -36,15 +38,15 @@ function project(vertices, width, height){
 
 function loop() {
     ctx.clearRect(0, 0, width, height); // clear canvas
-    
-    
+
+    ctx.fillRect(0, 0, 50, 50); 
     ctx.canvas.height = document.documentElement.clientHeight;
     ctx.canvas.width = document.documentElement.clientWidth;
 
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, width, height);
 
-    ctx.strokeStyle = "rgba(209, 27, 118)";
+    ctx.strokeStyle = "#ffffff";
 
     cube.rotateCubeX(pointer.y * 0.001);
     cube.rotateCubeY(-pointer.x * 0.001);
@@ -68,43 +70,31 @@ function loop() {
 
         if (-p1.x * n.x + -p1.y * n.y + -p1.z * n.z <= 0) {
 
-            ctx.beginPath();
-            ctx.moveTo(vertices[face[0]].x, vertices[face[0]].y);
-            ctx.lineTo(vertices[face[1]].x, vertices[face[1]].y);
-            ctx.lineTo(vertices[face[2]].x, vertices[face[2]].y);
-            ctx.lineTo(vertices[face[3]].x, vertices[face[3]].y);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(vertices[face[0]].x, vertices[face[0]].y);
+          ctx.lineTo(vertices[face[1]].x, vertices[face[1]].y);
+          ctx.lineTo(vertices[face[2]].x, vertices[face[2]].y);
+          ctx.lineTo(vertices[face[3]].x, vertices[face[3]].y);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
 
         }
         //console.log(cube.vertices);
         //console.log(cube.planes);
+
     }
-
-    // Draw the 60x60 grid of transparent 1x1 squares
-    ctx.fillStyle = "rgba(198, 255, 183, 0.5)";
-    const gridSize = 240;
-    const gridOffsetX = (width - gridSize) / 2;
-    const gridOffsetY = (height - gridSize) / 2;
-
-    for (let x = 0; x < gridSize; x += 4) {
-        for (let y = 0; y < gridSize; y += 4) {
-            ctx.fillRect(gridOffsetX + x, gridOffsetY + y, 4, 4);
-        }
-    }
-
     window.requestAnimationFrame(loop);
-    }
+}
 
-    window.addEventListener("click", (event) => {
+window.addEventListener("click", (event) => {
 
     pointer.x = event.pageX - width * 0.5;
     pointer.y = event.pageY - height * 0.5;
 
-    });
+});
 
 
-    console.log(cube.planes[1]);
-    console.log(cube.vertices);
-    loop();
+console.log(cube.planes[1]);
+console.log(cube.vertices);
+loop();

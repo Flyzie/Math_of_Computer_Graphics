@@ -1,0 +1,14 @@
+# ninja log v5
+226	1311	7282599164622488	CMakeFiles/MatGrafKompMatrix.dir/src/Section.cpp.obj	7c49a7072573264c
+15	1326	7282599164657200	CMakeFiles/MatGrafKompMatrix.dir/main.cpp.obj	b4a4113e5fb6afe
+205	1358	7282599164820889	CMakeFiles/MatGrafKompMatrix.dir/src/Cube.cpp.obj	619cf9ff34e7d541
+40	1366	7282599164771283	CMakeFiles/MatGrafKompMatrix.dir/src/Plane.cpp.obj	761a5564fd23094e
+25	1375	7282599165197845	CMakeFiles/MatGrafKompMatrix.dir/src/Matrix3x3.cpp.obj	fb8f435e837ad415
+171	1399	7282599165505361	CMakeFiles/MatGrafKompMatrix.dir/src/Camera.cpp.obj	8949547003e88835
+20	1023	7282599370510556	CMakeFiles/MatGrafKompMatrix.dir/src/Quaternion.cpp.obj	b0bb3dcf722add9a
+54	1034	7282599370753591	CMakeFiles/MatGrafKompMatrix.dir/src/Vector.cpp.obj	b240a5ae6511a425
+44	1039	7282599370748635	CMakeFiles/MatGrafKompMatrix.dir/src/Line.cpp.obj	dc77b23e93b84826
+5	609	7282599786031290	CMakeFiles/MatGrafKompMatrix.dir/src/Matrix4x4.cpp.obj	61d6036611d8c0b0
+609	1054	7282599790474154	MatGrafKompMatrix.exe	bbd9cff09edd354a
+7	640	7282600426589793	CMakeFiles/MatGrafKompMatrix.dir/main.cpp.obj	b4a4113e5fb6afe
+640	909	7282600429263803	MatGrafKompMatrix.exe	bbd9cff09edd354a
