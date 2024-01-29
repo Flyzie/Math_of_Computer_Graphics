@@ -1,38 +1,36 @@
-import Vector3D from './vectors';
-import Matrix3D from './matrix';
-import Quaternion from './quaternion';
-import Line3D from './line';
+import Vector3D from './vectors.js';
+import Matrix3D from './matrix.js';
+import Quaternion from './quaternion.js';
+import Line3D from './line.js';
 
 class Plane3D{
+    
     constructor(a, b, c, d){
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
+        if (arguments.length === 4 && typeof a === 'object' && a instanceof Vector3D) {
+            let v1 = new Vector3D();
+            v1 = b;
+            v1.subtract(a);
+            let v2 = new Vector3D();
+            v2 = c;
+            v2.subtract(b);
+            this.normal = v1.crossProduct(v2).normalize();
+            let negativeNormal = new Vector3D();
+            negativeNormal.scalarMultiply(-1);
 
-        const vec = new Vector3D(a,b,c);
-        this.normal = vec;
+            this.a = this.normal.x;
+            this.b = this.normal.y;
+            this.c = this.normal.z;
+            this.d = negativeNormal.dotProduct(a);
+            
+        } else {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            this.d = d;
+            this.normal = new Vector3D(a, b, c);
+        }
     }
-
-    calculatePlaneCoefficients(v1, v2, v3) {
-        // Calculate two vectors that lie on the plane
-        let vec1 = v2.subtract(v1);
-        let vec2 = v3.subtract(v1);
-
-        // Calculate the cross product of these vectors
-        let normal = vec1.cross(vec2);
-
-        // The coefficients a, b, c are the components of the normal vector
-        let a = normal.x;
-        let b = normal.y;
-        let c = normal.z;
-
-        // The coefficient d can be calculated using one of the points on the plane
-        let d = -(a * v1.x + b * v1.y + c * v1.z);
-
-        return [a, b, c, d];
-    }
-
+    
     intersectionWithPlane(plane) {
         const line = new Line3D();
         line.dir = this.normal.crossProduct(plane.normal);

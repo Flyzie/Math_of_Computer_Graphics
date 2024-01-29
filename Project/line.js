@@ -1,7 +1,7 @@
 
-import Matrix3D from './matrix';
-import Quaternion from './quaternion';
-import Vector3D from './vectors';
+import Matrix3D from './matrix.js';
+import Quaternion from './quaternion.js';
+import Vector3D from './vectors.js';
 
 class Line3D{
     constructor(p, dir){

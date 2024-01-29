@@ -1,4 +1,4 @@
-import Vector3D from './vectors';
+import Vector3D from './vectors.js';
 
 class Section3D {
     constructor(startPoint, endPoint) {

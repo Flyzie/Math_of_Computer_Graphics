@@ -1,4 +1,4 @@
-import Vector3D from './vectors';
+import Vector3D from './vectors.js';
 
 class Quaternion{
     constructor(w, x, y, z) {
@@ -89,34 +89,6 @@ class Quaternion{
   
     return new Vector3D(rotatedPointQuaternion.x, rotatedPointQuaternion.y, rotatedPointQuaternion.z);
   }
-  
-  
-<<<<<<< Updated upstream
-  console.log('-----------------QUATERNIONS-----------------');
 
-=======
-
-  console.log('-------------------QUATERNION-------------------');
-  // Example usage:
->>>>>>> Stashed changes
-  const quaternion1 = new Quaternion(1, 2, 3, 4);
-  const quaternion2 = new Quaternion(5, 6, 7, 8);
-  const testPoint = new Vector3D(-1,-1,-1)
-  const rotatedPoint = rotatePointAroundAxis(testPoint, 270);
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
-  console.log("Original Point:", testPoint);
-  console.log("Rotated Point:", rotatedPoint);
-  
-  
-  console.log(quaternion1.multiply(quaternion2));
-<<<<<<< Updated upstream
-  console.log(quaternion2.multiply(quaternion1));
-=======
-  console.log(quaternion2.multiply(quaternion1));
  
   export default Quaternion;
->>>>>>> Stashed changes

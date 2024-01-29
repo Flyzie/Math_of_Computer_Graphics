@@ -7,11 +7,7 @@ const Section3D = require('./section').default;
 const Orb3D = require('./orb');
 //-------------------QUATERNION-------------------
 
-<<<<<<< Updated upstream
-console.log('-----------------LINES AND STUFF-----------------');
-=======
 console.log('-------------------LINES ETC-------------------');
->>>>>>> Stashed changes
 const line1 = new Line3D(new Vector3D(-2, 4, 0), new Vector3D(3, 1, 5));
 const line2 = new Line3D(new Vector3D(-2, 4, 0), new Vector3D(1, -5, 3));
 //Intersection between lines

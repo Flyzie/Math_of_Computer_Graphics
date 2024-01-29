@@ -1,15 +1,17 @@
-const Vector3D = require('./vectors').default;
-const Matrix3D = require('./matrix').default;
-const Quaternion = require('./quaternion').default;
-const Line3D = require('./line');
-const Plane3D = require('./plane').default
-const Section3D = require('./section').default;
-const Orb3D = require('./orb');
+import Vector3D from './vectors.js';
+import Matrix3D from './matrix.js';
+import Quaternion from './quaternion.js';
+import Line3D from './line.js';
+import Plane3D from './plane.js';
+import Section3D from './section.js';
+
 
 class Cube3D{
     constructor(centerPoint, size){
         this.size = size;
         this.centerPoint = centerPoint;
+
+        size *= 0.5;
 
         this.vertices = [new Vector3D(centerPoint.x - size, centerPoint.y - size, centerPoint.z - size),
             new Vector3D(centerPoint.x + size, centerPoint.y - size, centerPoint.z - size),
@@ -21,12 +23,12 @@ class Cube3D{
             new Vector3D(centerPoint.x - size, centerPoint.y + size, centerPoint.z + size)];
         
         this.planes = [
-            new Plane3D(...this.calculatePlaneCoefficients(this.vertices[0], this.vertices[1], this.vertices[2])), // Front face
-            new Plane3D(...this.calculatePlaneCoefficients(this.vertices[1], this.vertices[5], this.vertices[6])), // Right face
-            new Plane3D(...this.calculatePlaneCoefficients(this.vertices[5], this.vertices[4], this.vertices[7])), // Back face
-            new Plane3D(...this.calculatePlaneCoefficients(this.vertices[4], this.vertices[0], this.vertices[3])), // Left face
-            new Plane3D(...this.calculatePlaneCoefficients(this.vertices[3], this.vertices[2], this.vertices[6])), // Top face
-            new Plane3D(...this.calculatePlaneCoefficients(this.vertices[0], this.vertices[1], this.vertices[5]))  // Bottom face
+            new Plane3D(this.vertices[0], this.vertices[1], this.vertices[2], this.vertices[3]), // Front face
+            new Plane3D(this.vertices[1], this.vertices[6], this.vertices[5], this.vertices[2]), // Right face
+            new Plane3D(this.vertices[6], this.vertices[7], this.vertices[4], this.vertices[5]), // Back face
+            new Plane3D(this.vertices[7], this.vertices[0], this.vertices[3], this.vertices[4]), // Left face
+            new Plane3D(this.vertices[3], this.vertices[2], this.vertices[5], this.vertices[4]), // Top face
+            new Plane3D(this.vertices[0], this.vertices[1], this.vertices[6], this.vertices[7])  // Bottom face
         ];
     }
 
@@ -65,4 +67,4 @@ function convertVector(Vector){
     return new Matrix3D(4,1, Vector.x, Vector.y, Vector.z, 1);
 }
 
-module.exports = Cube3D;
+export default Cube3D;

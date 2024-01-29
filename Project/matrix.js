@@ -1,4 +1,4 @@
-import Vector3D from './vectors';
+import Vector3D from './vectors.js';
 
 class Matrix{
     constructor (rows, cols, ...parameters){
@@ -205,7 +205,7 @@ class Matrix{
     }
 
 
-
+/*
     function translationMatrix(translationVector){
         return new Matrix(4,4,
             1, 0, 0, translationVector.x,
@@ -256,5 +256,5 @@ console.log(resultMatrix(vectorTest, translationVector, scaleVector));
 //console.log(identytyMat);
 //console.log(matrix1.matrixTranspose())
 
-
+*/
 export default Matrix;
